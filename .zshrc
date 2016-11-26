@@ -19,11 +19,6 @@ SAVEHIST=1000000
 # プロンプト
 
 chpwd() { clear;echo \[`pwd`\];ls }
-# 1行表示
-# PROMPT="%~ %# "
-# 2行表示
-#PROMPT="%{${fg[yellow]}%}[%n@%m]%{${reset_color}%} %~
-#%# "
 
 PROMPT="
 %{${fg[green]}%}@%m %{${fg[yellow]}%}[%~]%{${fg[cyan]}%}
@@ -31,10 +26,7 @@ PROMPT="
 
 PROMPT2='[%n]> '
 
-#PROMPT="[%B%~${default}%b] %E
-#%b%# "
-#RPROMPT='[%n@%m]'
- 
+
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
 select-word-style default
@@ -105,9 +97,6 @@ setopt no_flow_control
  
 # '#' 以降をコメントとして扱う
 setopt interactive_comments
- 
-# ディレクトリ名だけでcdする
-setopt auto_cd
  
 # cd したら自動的にpushdする
 setopt auto_pushd
@@ -182,13 +171,6 @@ case ${OSTYPE} in
         alias ls='ls -F --color=auto'
         ;;
 esac
- 
-# vim:set ft=zsh:
 
 ########################################
-# Python
-export PYENV_ROOT="${HOME}/.pyenv"
-if [ -d "${PYENV_ROOT}" ]; then
-export PATH=${PYENV_ROOT}/bin:$PATH
-eval "$(pyenv init -)"
-fi
+
