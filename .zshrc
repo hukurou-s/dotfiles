@@ -18,7 +18,9 @@ SAVEHIST=1000000
  
 # プロンプト
 
-chpwd() { clear;echo \[`pwd`\];ls }
+chpwd() { clear;echo \[`pwd`\]; ls -G -F }
+
+
 
 PROMPT="
 %{${fg[green]}%}@%m %{${fg[yellow]}%}[%~]%{${fg[cyan]}%}
@@ -173,4 +175,8 @@ case ${OSTYPE} in
 esac
 
 ########################################
+
+
+
+
 
