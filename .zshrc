@@ -21,7 +21,7 @@ SAVEHIST=1000000
 
 
 #変数として宣言
-RPROMPT=$'%{\e[38;5;011m%}[%~]%{\e[0m%}'
+RPROMPT=$'%{\e[38;5;158m%}[%~]%{\e[0m%}'
 
 autoload -Uz vcs_info
 setopt prompt_subst
@@ -40,7 +40,7 @@ chpwd() { clear;echo \[`pwd`\]; ls -G -F }
 #PROMPT="]}}}}]})
 #%{${fg[green]}%}@%m %{${fg[yellow]}%}[%~]%{${fg[cyan]}%}
 #[%n]%{${reset_color}%}-> "
-PROMPT=$'%{\e[38;5;165m%}[@%m]%{\e[0m%}%{\e[38;5;158m%}-> %{\e[0m%}'
+PROMPT=$'%{\e[38;5;199m%}[@%m]%{\e[0m%}%{\e[38;5;226m%}-> %{\e[0m%}'
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
 #PROMPT2='][%n]> '
@@ -56,10 +56,10 @@ zstyle ':zle:*' word-style unspecified
 
 #ファイルの色付け設定
 #export LSCOLORS=gxfxxxxxcxxxxxxxxxgxgx
-export LSCOLORS=exfxcxdxbxegedabagacad
-export LS_COLORS='di=01;35:ln=01;35:ex=01;32'
-zstyle ':completion:*' list-colors 'di=35' 'ln=35' 'ex=32'
-
+export LSCOLORS=cxexcxdxbxegedabagacad
+autoload -U compinit
+export LS_COLORS='di=01;32:ln=01;35:ex=01;32'
+zstyle ':completion:*' list-colors 'di=32' 'ln=35' 'ex=32'
 #ターミナルのタイトル
 case "${TERM}" in
     kterm*|xterm)
@@ -87,7 +87,8 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
  
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
- 
+
+zstyle ':completion:*:default' menu select=2
  
 ########################################
 # vcs_info
