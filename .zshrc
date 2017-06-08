@@ -3,6 +3,9 @@
 # 環境変数
 export LANG=ja_JP.UTF-8
 export EDITOR=emacs
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=/Users/LEO/anaconda3/bin:$PATH
+export PATH=/Users/LEO/Terminal/Pokemon-Terminal-master:$PATH
  
 # 色を使用出来るようにする
 autoload -Uz colors
@@ -15,18 +18,32 @@ bindkey -e
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
- 
+
+
+#変数として宣言
+RPROMPT=$'%{\e[38;5;011m%}[%~]%{\e[0m%}'
+
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
 # プロンプト
 
 chpwd() { clear;echo \[`pwd`\]; ls -G -F }
 
 
 
-PROMPT="
-%{${fg[green]}%}@%m %{${fg[yellow]}%}[%~]%{${fg[cyan]}%}
-[%n]%{${reset_color}%}-> "
+#PROMPT="]}}}}]})
+#%{${fg[green]}%}@%m %{${fg[yellow]}%}[%~]%{${fg[cyan]}%}
+#[%n]%{${reset_color}%}-> "
+PROMPT=$'%{\e[38;5;165m%}[@%m]%{\e[0m%}%{\e[38;5;158m%}-> %{\e[0m%}'
+RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
-PROMPT2='[%n]> '
+#PROMPT2='][%n]> '
 
 
 # 単語の区切り文字を指定する
@@ -38,9 +55,10 @@ zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
 #ファイルの色付け設定
-export LSCOLORS=gxfxxxxxcxxxxxxxxxgxgx
-export LS_COLORS='di=01;36:ln=01;35:ex=01;32'
-zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'ex=32'
+#export LSCOLORS=gxfxxxxxcxxxxxxxxxgxgx
+export LSCOLORS=exfxcxdxbxegedabagacad
+export LS_COLORS='di=01;35:ln=01;35:ex=01;32'
+zstyle ':completion:*' list-colors 'di=35' 'ln=35' 'ex=32'
 
 #ターミナルのタイトル
 case "${TERM}" in
@@ -73,17 +91,17 @@ zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
  
 ########################################
 # vcs_info
-autoload -Uz vcs_info
-autoload -Uz add-zsh-hook
+#autoload -Uz vcs_info
+#autoload -Uz add-zsh-hook
  
-zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
-zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
+#zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
+#zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
  
-function _update_vcs_info_msg() {
-    LANG=en_US.UTF-8 vcs_info
-    RPROMPT="${vcs_info_msg_0_}"
-}
-add-zsh-hook precmd _update_vcs_info_msg
+#function _update_vcs_info_msg() {
+#    LANG=en_US.UTF-8 vcs_info
+#    RPROMPT="${vcs_info_msg_0_}"
+#}
+#add-zsh-hook precmd _update_vcs_info_msg
  
  
 ########################################
