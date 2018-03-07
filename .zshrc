@@ -3,6 +3,9 @@
 # 環境変数
 export LANG=ja_JP.UTF-8
 export EDITOR=emacs
+# export PATH=$HOME/.nodebrew/current/bin:$PATH
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH=/Users/LEO/anaconda3/bin:$PATH
 export PATH=/Users/LEO/Terminal/Pokemon-Terminal-master:$PATH
@@ -72,6 +75,7 @@ esac
 ########################################
 # 補完
 # 補完機能を有効にする
+
 autoload -Uz compinit
 compinit
  
@@ -163,6 +167,8 @@ alias sudo='sudo '
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
+
+alias gpp='g++ -Wall -Wextra -Wnon-virtual-dtor -Woverloaded-virtual'
  
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
