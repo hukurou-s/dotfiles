@@ -9,6 +9,9 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH=/Users/LEO/anaconda3/bin:$PATH
 export PATH=/Users/LEO/Terminal/Pokemon-Terminal-master:$PATH
+
+eval "$(rbenv init - zsh)"
+eval "$(nodenv init - zsh)"
  
 # 色を使用出来るようにする
 autoload -Uz colors
